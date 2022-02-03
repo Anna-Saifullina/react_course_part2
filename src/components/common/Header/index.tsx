@@ -1,8 +1,17 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
+import { userLogoutAction } from "../../../store/actions";
+import { getUserData } from "../../../store/selectors";
 import style from "./Header.module.scss";
 
 const Header: React.FC = () => {
+  const dispatch = useDispatch();
+  const userData = useSelector(getUserData);
+  const logoutHandler = () => {
+    dispatch(userLogoutAction());
+  };
+
   return (
     <header className={style["wrapper-example"]}>
       <NavLink to="/">
@@ -23,7 +32,21 @@ const Header: React.FC = () => {
           </li>
         </ul>
       </nav>
-      <h1>Header</h1>
+      {userData.firstName && userData.lastName ? (
+        <div>
+          <p>{userData.firstName}</p>
+          <p>{userData.lastName}</p>
+          <button type="button" onClick={logoutHandler}>
+            <span>logout</span>
+          </button>
+        </div>
+      ) : (
+        <Link to="/registration">
+          <button type="button" className={style.btn}>
+            <span>SIGN UP</span>
+          </button>
+        </Link>
+      )}
     </header>
   );
 };
