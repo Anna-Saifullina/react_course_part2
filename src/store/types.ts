@@ -1,31 +1,7 @@
-import { PostsDataType } from "../assets/data";
-import { PostsActionsType, UsersActionsType } from "./actions";
+import { ReducerType as PostReducerType } from "./Posts/types";
+import { ReducerType as UsersReducerType } from "./Users/types";
 
-export type ReducerType = {
-  posts: PostsDataType;
-  user: UserType;
+export type RootReducerType = {
+  posts: PostReducerType;
+  users: UsersReducerType;
 };
-
-export type UserType = {
-  lastName: string;
-  firstName: string;
-};
-
-type FetchPostsDataActionType = {
-  type: PostsActionsType.fetchPostsData;
-  payload: PostsDataType;
-};
-
-type userRegistrationActionType = {
-  type: UsersActionsType.userRegistration;
-  payload: UserType;
-};
-
-type userLogoutActionType = {
-  type: UsersActionsType.userLogout;
-};
-
-export type ActionsType =
-  | FetchPostsDataActionType
-  | userRegistrationActionType
-  | userLogoutActionType;

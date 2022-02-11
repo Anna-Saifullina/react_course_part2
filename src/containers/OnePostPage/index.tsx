@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Navigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import OnePost from "../../components/OnePost";
-import data from "../../assets/data";
+import { getOnePostData, getPostsData } from "../../store/Posts/selectors";
+import { fetchOnePostAction } from "../../store/Posts/actions";
 
 const OnePostPage: React.FC = () => {
   const { id } = useParams();
-  const post = data.find((el) => el.id === +id!);
-  if (post) {
-    return <OnePost post={post} />;
-  }
-  return <Navigate to="/posts" />;
+  const dispatch = useDispatch();
+  const post = useSelector(getOnePostData);
+
+  useEffect(() => {
+    dispatch(fetchOnePostAction(id!));
+  }, []);
+
+  return <OnePost post={post} />;
 };
 
 export default OnePostPage;

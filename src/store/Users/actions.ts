@@ -1,23 +1,9 @@
-import { PostsDataType } from "../assets/data";
 import { UserType } from "./types";
-
-/* eslint-disable no-unused-vars */
-export enum PostsActionsType {
-  fetchPostsData = "FETCH_POST_DATA",
-}
 
 export enum UsersActionsType {
   userRegistration = "USER_REGISTRATION",
   userLogout = "USER_LOGOUT",
 }
-
-export const fetchPostsDataAction = (data: PostsDataType) => {
-  return {
-    type: PostsActionsType.fetchPostsData,
-    payload: data,
-  };
-};
-
 export const userRegistrationAction = (user: UserType) => {
   const editUser = {
     lastName: user.lastName.toLocaleLowerCase(),
@@ -28,7 +14,6 @@ export const userRegistrationAction = (user: UserType) => {
     payload: editUser,
   };
 };
-
 export const userLogoutAction = () => {
   return {
     type: UsersActionsType.userLogout,

@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import { userLogoutAction } from "../../../store/actions";
-import { getUserData } from "../../../store/selectors";
+import { userLogoutAction } from "../../../store/Users/actions";
+import { getUserData } from "../../../store/Users/selectors";
 import style from "./Header.module.scss";
 
 const Header: React.FC = () => {

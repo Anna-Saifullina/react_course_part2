@@ -1,6 +1,6 @@
 @import "../../../assets/style/vars";
 .page_wrapper {
-  width: 100vw;
+  max-width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;

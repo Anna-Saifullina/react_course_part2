@@ -1,9 +1,9 @@
-import { PostsActionsType, UsersActionsType } from "./actions";
-import { ActionsType, ReducerType } from "./types";
+import { PostsActionsType } from "./actions";
+import { ActionsType, OnePostType, ReducerType } from "./types";
 
 const initialState: ReducerType = {
   posts: [],
-  user: { lastName: "", firstName: "" },
+  onePost: {} as OnePostType,
 };
 
 const reducer = (state = initialState, action: ActionsType): ReducerType => {
@@ -13,15 +13,10 @@ const reducer = (state = initialState, action: ActionsType): ReducerType => {
         ...state,
         posts: action.payload,
       };
-    case UsersActionsType.userRegistration:
+    case PostsActionsType.fetchOnePost:
       return {
         ...state,
-        user: action.payload,
-      };
-    case UsersActionsType.userLogout:
-      return {
-        ...state,
-        user: initialState.user,
+        onePost: action.payload,
       };
     default:
       return state;

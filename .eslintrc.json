@@ -35,9 +35,10 @@
     ],
     "react/prop-types": "off",
     "react/require-default-props": "off",
-    "no-unused-vars": "warn",
+    "no-unused-vars": "off",
     "no-console": "off",
     "no-shadow": "off",
-    "default-param-last": "off"
+    "default-param-last": "off",
+    "import/prefer-default-export": "off"
   }
 }

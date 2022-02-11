@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { OnePostType } from "../../store/Posts/types";
 
 type PostListPropsType = {
-  data: { id: number; header: string; content: string }[];
+  data: OnePostType[];
 };
 
 const PostsList: React.FC<PostListPropsType> = (props) => {
@@ -11,7 +12,7 @@ const PostsList: React.FC<PostListPropsType> = (props) => {
     <ul>
       {data.map((el) => (
         <li key={el.id}>
-          <Link to={`/posts/${el.id}`}>{el.header}</Link>
+          <Link to={`/posts/${el.id}`}>{el.title}</Link>
         </li>
       ))}
     </ul>

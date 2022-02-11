@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { userRegistrationAction } from "../../../store/actions";
-import { getUserData } from "../../../store/selectors";
+import { userRegistrationAction } from "../../../store/Users/actions";
+import { getUserData } from "../../../store/Users/selectors";
 import Input from "../../common/Input";
 
 const RegistrationForm: React.FC = () => {
