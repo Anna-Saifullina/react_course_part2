@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import makeRequest from "../../network";
 import { OnePostType } from "../../store/Posts/types";
 import Input from "../common/Input";
@@ -8,6 +8,14 @@ type PostEditPropsType = {
   submitHandler: (data: OnePostType) => void;
 };
 
+const veryHardCompute = () => {
+  let i = 0;
+  while (i < 10000000) {
+    i += 1;
+  }
+  return i;
+};
+
 const PostEdit: React.FC<PostEditPropsType> = (props) => {
   const {
     post: { title, body, id, userId },
@@ -15,6 +23,8 @@ const PostEdit: React.FC<PostEditPropsType> = (props) => {
   } = props;
   const [titleValue, setTitleValue] = useState(title);
   const [bodyValue, setBodyValue] = useState(body);
+
+  const countInterate = useMemo(veryHardCompute, []);
 
   return (
     <div>
@@ -32,7 +42,7 @@ const PostEdit: React.FC<PostEditPropsType> = (props) => {
         type="text"
         title="Body"
       />
-
+      <p>{countInterate}</p>
       <button
         type="button"
         onClick={() =>

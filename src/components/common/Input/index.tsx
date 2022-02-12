@@ -13,6 +13,7 @@ const Input: React.FC<InputPropsType> = (props) => {
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
+  console.log("render input", title);
 
   return (
     <div style={{ fontSize: "24px", display: "flex", flexDirection: "column" }}>
@@ -29,4 +30,9 @@ const Input: React.FC<InputPropsType> = (props) => {
   );
 };
 
-export default Input;
+export default React.memo(Input, (prevProps, nextProps) => {
+  if (prevProps.value === nextProps.value) {
+    return true;
+  }
+  return false;
+});

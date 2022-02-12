@@ -1,23 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 type MainContentPropType = {
   setWasOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const MainContent: React.FC<MainContentPropType> = (props) => {
   const { setWasOpen } = props;
-  const handler = () => {
+  const [newText, setNewText] = useState("");
+
+  const handler = useCallback(() => {
     console.log("click");
-  };
+  }, []);
 
   useEffect(() => {
     console.log("main content mount");
     document.body.addEventListener("click", handler);
-    setWasOpen(true);
-    return () => {
-      console.log("main content unmount!!");
-      document.body.removeEventListener("click", handler);
-    };
+    // setWasOpen(true);
+    // return () => {
+    //   console.log("main content unmount!!");
+    //   document.body.removeEventListener("click", handler);
+    // };
   }, []);
+
+  const removerClick = () => {
+    console.log("removerClick");
+    document.body.removeEventListener("click", handler);
+  };
 
   return (
     <section className="container">
@@ -37,6 +44,11 @@ const MainContent: React.FC<MainContentPropType> = (props) => {
         ipsam commodi odio ab ratione quae! Aliquid dolore magni, veniam
         laboriosam quis laudantium. Vero sit eveniet distinctio!
       </p>
+      <p>{newText}</p>
+      <input type="text" onChange={(event) => setNewText(event.target.value)} />
+      <button type="button" onClick={removerClick}>
+        ОТПИСАТЬСЯ ОТ КЛИКА
+      </button>
     </section>
   );
 };
